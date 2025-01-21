@@ -14,7 +14,13 @@
       <p>2025/ Wrike sometjing </p>
 
       
-      <div class="project-images" id="project-images"></div> <!-- Placeholder for project images -->
+      <div class="project-images" id="project-images">
+
+
+        <img class="project-image" src="https://mir-s3-cdn-cf.behance.net/project_modules/source/fc615165825189.5b01dec0ea6c3.gif">
+        <p>asdsadasdasd</p>
+        <img class="project-image" src="https://ucarecdn.com/127ab9fa-699b-4f04-bf26-e294daa7a321/-/preview/">
+      </div>
     </div>
   </div>
 
@@ -28,72 +34,6 @@
 
 
   <script>
-
-
-     // Load project images dynamically with descriptions
-     const projectImages = [
-        {
-          url: "https://ucarecdn.com/d93ff533-f289-4213-8dd5-55cb6a70ecdc/-/preview/",
-          description: "Description for image 1Description for image 1Description for image 1Description for image 1Description for image 1Description for image 1"
-        },
-        {
-          url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fc615165825189.5b01dec0ea6c3.gif",
-          description: ""
-        },
-        {
-          url: "https://ucarecdn.com/af930cea-832a-419e-aab6-1c1b471f671d/-/preview/",
-          description: "Description for image 3"
-        },
-        {
-          url: "https://ucarecdn.com/af930cea-832a-419e-aab6-1c1b471f671d/-/preview/",
-          description: "Description for image 3"
-        }
-      ];
-
-      const projectImagesContainer = document.getElementById("project-images");
-      projectImages.forEach(image => {
-        const imageWrapper = document.createElement("div");
-        imageWrapper.classList.add("image-wrapper");
-
-        if (image.description) {
-          const p = document.createElement("p");
-          p.textContent = image.description;
-          imageWrapper.appendChild(p);
-        }
-
-        const imgContainer = document.createElement("div");
-        imgContainer.classList.add("img-container");
-
-        const img = document.createElement("img");
-        img.src = image.url;
-        img.classList.add("project-image");
-        imgContainer.appendChild(img);
-
-        const button = document.createElement("button");
-        button.textContent = "Open";
-        button.classList.add("open-button");
-        imgContainer.appendChild(button);
-
-        imageWrapper.appendChild(imgContainer);
-        projectImagesContainer.appendChild(imageWrapper);
-
-        // Add click event to open modal
-        button.addEventListener('click', () => {
-          const modal = document.getElementById("image-modal");
-          const modalImg = document.getElementById("modal-image");
-          const captionText = document.getElementById("caption");
-
-          modal.style.display = "block";
-          modalImg.src = img.src;
-          captionText.innerHTML = img.alt;
-
-          const span = document.getElementsByClassName("close")[0];
-          span.onclick = () => {
-            modal.style.display = "none";
-          };
-        });
-      });
-      
 
 
 
