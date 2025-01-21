@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Portfolio with Overlay Menu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div id="menu-placeholder"></div> <!-- Placeholder for the menu -->
+    <button class="menu-tab-button">☰</button>
+    <div class="project-wrapper">
+        <p>Additionally, the environmental impact of electronic waste and energy consumption in tech production and operations poses a serious challenge to sustainability efforts. Yet, technology also offers solutions, with advancements in renewable energy, electric vehicles, and smart grids playing a crucial role in combating climate change. Balancing these benefits and challenges requires thoughtful policies, ethical considerations, and a commitment to ensuring technology serves humanity equitably and sustainably. As society continues to innovate, it becomes increasingly important to address these issues responsibly, fostering a future where technology enhances the quality of life for everyone while minimizing its potential harms.</p>
+
+      
+
+      <img class="project-image" src="images/projects/Wrike Rebranding/image-1.png" alt="Project Image">
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded and parsed");
+
+      // Load the menu component
+      const menuPlaceholder = document.getElementById("menu-placeholder");
+      fetch("menu.html")
+        .then(response => response.text())
+        .then(data => {
+          menuPlaceholder.innerHTML = data;
+          console.log("Menu loaded successfully");
+
+          // Menu open/close functionality
+          const menuButton = document.querySelector('.menu-tab-button');
+          const closeButton = document.querySelector('.close-tab-button');
+          const menu = document.querySelector('.menu');
+
+          const openMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.add('menu-open'); // Add class to show the menu
+                console.log("Menu opened");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          const closeMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.remove('menu-open'); // Remove class to hide the menu
+                console.log("Menu closed");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          // Attach click events to buttons
+          if (menuButton) {
+            menuButton.addEventListener('click', () => {
+              console.log("Menu button clicked");
+              openMenu();
+            });
+          } else {
+            console.error("Menu button not found");
+          }
+
+          if (closeButton) {
+            closeButton.addEventListener('click', () => {
+              console.log("Close button clicked");
+              closeMenu();
+            });
+          } else {
+            console.error("Close button not found");
+          }
+
+          // Select all collapsible buttons
+          const collapsibles = document.querySelectorAll('.collapsible');
+          collapsibles.forEach(button => {
+            button.addEventListener('click', () => {
+              // Toggle the "expanded" class to rotate the arrow
+              button.classList.toggle('expanded');
+
+              // Find the next sibling (the nested list)
+              const nestedList = button.nextElementSibling;
+              if (nestedList) {
+                // Toggle the display of the nested list
+                nestedList.style.display = nestedList.style.display === 'block' ? 'none' : 'block';
+              }
+            });
+          });
+        })
+        .catch(error => console.error("Error loading menu:", error));
+
+      // Animate elements on the page
+      const elementsToAnimate = document.querySelectorAll('.project-wrapper > *');
+      elementsToAnimate.forEach((element, index) => {
+        element.classList.add('fade-in', `fade-in-delay-${index}`);
+      });
+    });
+  </script>
+</body>
+</html>
