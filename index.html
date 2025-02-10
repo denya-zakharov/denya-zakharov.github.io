@@ -15,15 +15,10 @@
     <div class="content-wrapper">
       <div class="text-section">
       <p>
-        Currently, I am an event manager at Macro Vision architectural consultancy. Since 2017, I have
-        organized over fifty activities, from reading groups to one-day conferences and governmental forums.
+        Currently, I am a UX Designer at Wargaming, working on World of Tanks. Since 2024, I have delivered over 15 features, ranging from functionality improvements (e.g. One-Trust Cookie Banner, Admin Pannel) to full redesigns of major tools, such as the WoT Portal or WoT Registration form. 
       </p>
       <p>
-        Earlier, I worked in the events department at the Out Of The Box production company, curating cinema
-        weekends and festivals.
-      </p>
-      <p id="experience">
-        I received my BA in arts from the faculty of Media Communications at Lisbon’s Higher School of Economics.
+        Previously, I was part of the Design Department at Wrike, where I initially focused on creating marketing landing pages and banner campaigns. Later, as a member of the Web UX Team, I contributed to the design and optimization of Wrike’s website and blog.
       </p>
       <div class="contact" id="contact">
         <ul>
@@ -35,7 +30,8 @@
       </div>
       </div>
       <div class="image-section">
-      <img src="https://ucarecdn.com/ce8aebe0-7d06-47c2-b1a0-3dc07b7457b5/" alt="Portfolio visual representation" />
+      <canvas id="canvas" alt="Portfolio visual representation"></canvas>
+      <img src="https://ucarecdn.com/90c04a56-ea21-46e1-a747-75494d9bcad5/" alt="Overlay Image" class="overlay-image">
       </div>
     </div>
   </div>
@@ -121,6 +117,117 @@
       element.classList.add('fade-in', `fade-in-delay-${index}`);
     });
   });
+</script>
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const colors = ["#FF8383", "#FFF574", "#A1D6CB", "#A19AD3"];
+
+function createBlobShape(x, y, size) {
+    const numPoints = Math.floor(5 + Math.random() * 10); // Random number of points
+    const points = [];
+
+    for (let i = 0; i < numPoints; i++) {
+        const angle = (Math.PI * 2 * i) / numPoints;
+        const radius = size * (0.8 + Math.random() * 0.4); // Slight variation in radius
+        points.push({
+            x: x + Math.cos(angle) * radius,
+            y: y + Math.sin(angle) * radius,
+            vx: (Math.random() - 0.5) * 2, // Velocity for x
+            vy: (Math.random() - 0.5) * 2, // Velocity for y
+        });
+    }
+
+    return points;
+}
+
+function drawBlob(points, color) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+
+    for (let i = 1; i < points.length; i++) {
+        const next = points[(i + 1) % points.length];
+        ctx.quadraticCurveTo(
+            points[i].x,
+            points[i].y,
+            (points[i].x + next.x) / 2,
+            (points[i].y + next.y) / 2
+        );
+    }
+
+    ctx.closePath();
+    ctx.fill();
+}
+
+function initSystem() {
+    const numberOfParticles = 10;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    for (let i = 0; i < numberOfParticles; i++) {
+        particles.push({
+            x: centerX,
+            y: centerY,
+            size: 50 + Math.random() * 50, // Bigger blobs
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            shape: createBlobShape(centerX, centerY, 50 + Math.random() * 2),
+        });
+    }
+}
+
+function updateParticles() {
+    for (let particle of particles) {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Gradually update blob points
+        for (let point of particle.shape) {
+            point.x += point.vx;
+            point.y += point.vy;
+
+            // Apply slight damping to velocities for a smooth effect
+            point.vx += (Math.random() - 0.5) * 0.01;
+            point.vy += (Math.random() - 0.5) * 0.01;
+
+            // Keep the points within a reasonable distance from the center of the blob
+            const dx = point.x - particle.x;
+            const dy = point.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const maxDistance = particle.size * 0.1;
+        }
+    }
+}
+
+function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let particle of particles) {
+    drawBlob(particle.shape, particle.color);
+    }
+}
+
+function animate() {
+    updateParticles();
+    drawParticles();
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+initSystem();
+animate();
+
 </script>
 </body>
 </html>
