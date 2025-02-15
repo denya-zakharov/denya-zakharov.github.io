@@ -15,21 +15,23 @@
 
       
       <div class="project-images" id="project-images">
-
-        <p>The World of Tanks registration form is an inevitable first step in a new player's journey. Every new user must register an account before downloading the game client.
-
-        <p>For quite some time, the form remained unchanged. However, at the beginning of 2024, our team was tasked with reworking it. Among other objectives, the two main requirements were: Keeping the number of fields and their backend logic mostly the same and transforming the form into a step-by-step process rather than displaying everything on a single screen </p>
-            
-        <p>This change followed a trend seen in other multiplayer games and was believed to make the registration process easier and more inviting for new users</p>
-
         <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/ab4f6e53-9f6f-4d3b-9206-d1001d2ed6d1/" type="video/mp4"></video>
-       
-
+        <p>The World of Tanks registration form is an inevitable first step in a new player's journey. Every new user must register an account before downloading the game client.
+        <p>For quite some time, the form remained unchanged. However, at the beginning of 2024, our team was tasked with reworking it. Among other objectives, the two main requirements were: Keeping the number of fields and their backend logic mostly the same and transforming the form into a step-by-step process rather than displaying everything a single screen</p>
+        <p>This change followed a trend seen in other multiplayer games and was believed to make the registration process easier and more inviting for new users</p>
         <img class ="project-image" src="https://ucarecdn.com/2508b8e4-ac94-4866-a43c-ebea8a5502d5/" alt="01"/>
+        <p>The old flow primarily offered two options for creating an account: signing up with an email or using the 'Social Media Flow' (Google, Facebook, Twitch, etc.). Our main focus was the email flow, as it collected the most user data, provided the most control (in terms of styling) on our end, and was the most cumbersome. However, both flows have since been reworked. The idea was pretty straightforward—break the form into steps, keeping them to a minimum when possible while still collecting all the necessary data.</p>
         <img class ="project-image" src="https://ucarecdn.com/81f5bbb8-2269-4b5b-ae9a-d8dceb1de651/" alt="02"/>
+        <p>As always, a set of visual components was created with careful consideration of existing WoT styles. A classic approach to field design was taken, ensuring consistency. The field description always remains at the top, serving as a constant reminder of what is required from the user.</p>
         <img class ="project-image" src="https://ucarecdn.com/e5565838-713a-4d84-96a6-3082c465a278/" alt="03"/>
+        <p>A lot of time and effort went into covering all possible flows based on the user's location, age, and potential validation issues on both the front end and back end. Additionally, since the form structure is step-based, it was crucial to allow users to navigate back and modify previously provided information.</p>
+        <p>As a fun touch, I also wanted to add a small reward at the final step, so an animation of dog tags was created. Dog tags were chosen because they represent the first achievement a player receives upon entering the game for the first time. Later, the number of battles played is displayed on the tag in the game client, reinforcing the player's progression.</p>
         <img class ="project-image" src="https://ucarecdn.com/6c70e96f-337b-43d9-b7a1-5b310daebebb/" alt="04"/>
+        <p>The form validated each step on both the front end and back end, it allowed us to transparently indicate whether everything was proceeding as expected while the user filled in their details. Given that issues could arise at any stage, previously established components and filed states proved to be quite helpful..</p>
         <img class ="project-image" src="https://ucarecdn.com/3655ac9b-cf6a-4947-813e-e45d4031effc/" alt="05"/>
+        <p>We also conducted an A/B test comparing the new registration flow against the old one. The test ran for approximately a month, with the user groups split 50/50. The key metric was the conversion rate (CR), calculated as the number of email or social registrations divided by the total number of clicks. Social and Email flows were measured separetly</p>
+        <p>The results were quite positive for email registration, showing an increase in total CR ranging from approximately 10% to 28%, depending on the region. Additionally, email CR saw an improvement of 22% to 120% compared to the old form, again varying by region.</p>
+        <p>The results for the social media registration flow were not statistically significant. However, optimizing that flow was not the primary goal of this test.</p>
         <img class ="project-image" src="https://ucarecdn.com/615b148d-d2ff-4890-8f50-eaf190172ebf/" alt="06"/>
         <img class ="project-image" src="https://ucarecdn.com/fa7b0c29-057b-47ff-97a2-cbaef3413a3a/" alt="07"/>
         <img class ="project-image" src="https://ucarecdn.com/8547834d-3d3b-48dc-a929-af1ebcc869ef/" alt="08"/>

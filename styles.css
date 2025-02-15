@@ -163,8 +163,6 @@ ul {
 }
 
 .contact a {
-  color: #ff4000;
-  text-decoration: none;
   transition: color 0.3s;
   font-size: 20px;
   font-weight: 400;
