@@ -306,6 +306,8 @@ ul {
 }
 
 .content-wrapper {
+  max-width: 2000px;
+  max-height: 1000px;
   display: flex;
   flex-direction: row;
   flex: 1;
