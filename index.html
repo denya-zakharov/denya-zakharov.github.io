@@ -91,6 +91,14 @@
           console.error("Close button not found");
         }
 
+        // Close menu when clicking on the blurred background
+        const blurredBackground = document.querySelector('.menu');
+          blurredBackground.addEventListener('click', (event) => {
+            if (event.target === blurredBackground) {
+              closeMenu();
+            }
+          });
+
         // Select all collapsible buttons
         const collapsibles = document.querySelectorAll('.collapsible');
         collapsibles.forEach(button => {

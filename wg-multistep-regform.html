@@ -9,7 +9,9 @@
 <body>
   <div class="container">
     <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
-    <button class="menu-tab-button">☰</button>
+    <button class="menu-tab-button">
+      <img class ="icon" src="https://ucarecdn.com/0b5c1937-02fe-4b6f-8bc4-21edf07b5db2/" alt="Menu Icon" />
+    </button>
     <div class="project-wrapper">
       <p>2024/ World of Tanks Registration Flow </p>
 
@@ -91,6 +93,14 @@
           } else {
             console.error("Menu button not found");
           }
+
+          // Close menu when clicking on the blurred background
+          const blurredBackground = document.querySelector('.menu');
+          blurredBackground.addEventListener('click', (event) => {
+            if (event.target === blurredBackground) {
+              closeMenu();
+            }
+          });
 
           if (closeButton) {
             closeButton.addEventListener('click', () => {

@@ -9,7 +9,9 @@
 <body>
   <div class="container">
     <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
-    <button class="menu-tab-button">☰</button>
+    <button class="menu-tab-button">
+      <img class ="icon" src="https://ucarecdn.com/0b5c1937-02fe-4b6f-8bc4-21edf07b5db2/" alt="Menu Icon" />
+    </button>
     <div class="project-wrapper">
       <p>2020/ 36 Days of Type </p>
       <p>This is a yearly design challenge focused on experiments and having fun with letters. The idea is pretty straightforward: one day – one letter. The letters are created using different techniques. Some are glitched, some cut into peaces, some are printed on paper and dipped into water...</p>
@@ -102,6 +104,14 @@
           } else {
             console.error("Close button not found");
           }
+
+          // Close menu when clicking on the blurred background
+          const blurredBackground = document.querySelector('.menu');
+          blurredBackground.addEventListener('click', (event) => {
+            if (event.target === blurredBackground) {
+              closeMenu();
+            }
+          });
 
           // Select all collapsible buttons
           const collapsibles = document.querySelectorAll('.collapsible');

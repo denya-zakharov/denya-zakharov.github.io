@@ -9,16 +9,32 @@
 <body>
   <div class="container">
     <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
-    <button class="menu-tab-button">☰</button>
+    <button class="menu-tab-button">
+      <img class ="icon" src="https://ucarecdn.com/0b5c1937-02fe-4b6f-8bc4-21edf07b5db2/" alt="Menu Icon" />
+    </button>
     <div class="project-wrapper">
       <p>2024/ World of Tanks Homepage Redesign </p>
 
       
       <div class="project-images" id="project-images">
         <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/ed60ee42-093b-4737-932f-bb6388544066/" type="video/mp4"></video>
-        <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/0182c3b5-036b-4665-a70b-9fcc95463493/" type="video/mp4"></video>
         <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/eb54df9d-04d8-4268-9167-2c8caabe690d/" type="video/mp4"></video>
+        <img class="project-image" src="https://ucarecdn.com/4f9d3a80-0090-4fa8-80a9-28b2cd74d5b4/" alt="01"/>
+        <img class="project-image" src="https://ucarecdn.com/d298f058-982e-46b6-a9bf-730a0d8e5eff/" alt="02"/>
+        <img class="project-image" src="https://ucarecdn.com/8ad76f4e-68e3-41ff-8f60-04198355ddbc/" alt="03"/>
+        <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/0182c3b5-036b-4665-a70b-9fcc95463493/" type="video/mp4"></video>
+        <img class="project-image" src="https://ucarecdn.com/dcfd09da-f240-48e5-a67c-8a311b66b938/" alt="04"/>
+        <img class="project-image" src="https://ucarecdn.com/afcb83e5-8431-4dbc-b2db-9ac7b7c5d9d2/" alt="05"/>
+        <img class="project-image" src="https://ucarecdn.com/fe952159-355b-42c3-99ab-7c810cb5b821/" alt="06"/>
         <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/ab52f45f-10fa-469e-8fc3-9c91d4c01923/" type="video/mp4"></video>
+        <img class="project-image" src="https://ucarecdn.com/3d8d7bcb-d357-46f5-a2d1-b39f7411d8bd/" alt="07"/>
+        <img class="project-image" src="https://ucarecdn.com/deb4f7f4-62b8-428a-bd4d-d11d33df58db/" alt="08"/>
+        <img class="project-image" src="https://ucarecdn.com/dcf13bca-8425-4e4e-b91b-ae0a90878020/" alt="09"/>
+        <img class="project-image" src="https://ucarecdn.com/dfda5183-f507-4214-b658-191a26441bf7/" alt="10"/>
+        <img class="project-image" src="https://ucarecdn.com/42186cc5-2c78-4ee7-9212-fa4f76e99685/" alt="11"/>
+        <img class="project-image" src="https://ucarecdn.com/6876cd6c-e9b3-411c-a05f-d52651158ba9/" alt="12"/>
+        <img class="project-image" src="https://ucarecdn.com/d9e3016a-1cfd-4dd0-b5cf-5bdcbca3ad9d/" alt="13"/>
+
 
       </div>
     </div>
@@ -87,6 +103,14 @@
           } else {
             console.error("Close button not found");
           }
+
+          // Close menu when clicking on the blurred background
+          const blurredBackground = document.querySelector('.menu');
+          blurredBackground.addEventListener('click', (event) => {
+            if (event.target === blurredBackground) {
+              closeMenu();
+            }
+          });
 
           // Select all collapsible buttons
           const collapsibles = document.querySelectorAll('.collapsible');

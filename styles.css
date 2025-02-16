@@ -16,7 +16,6 @@ body {
   flex-direction: column;
 }
 
-/* Responsive Container */
 .container {
   flex: 1;
   display: flex;
@@ -26,9 +25,9 @@ body {
 }
 
 a {
-
   color: white;
 }
+
 .text-section {
   flex: 1;
   padding: 24px;
@@ -52,18 +51,13 @@ ul, li {
 
 ul {
   margin-bottom: 32px;
-}
-
-
-ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-/* Wrapper for each collapsible item */
 .collapsible-wrapper {
-  background-color: #2a2a2a; /* Slightly lighter background */
+  background-color: #2a2a2a;
   margin-bottom: 8px;
   border-radius: 6px;
   overflow: hidden;
@@ -72,9 +66,9 @@ ul {
 
 .collapsible {
   display: flex;
-  justify-content: space-between; /* Space between text and arrow */
+  justify-content: space-between;
   align-items: center;
-  width: 100%; /* Make the button take the full width of the container */
+  width: 100%; 
   padding: 12px 16px;
   cursor: pointer;
   font-size: 16px;
@@ -83,8 +77,8 @@ ul {
   background: none;
   color: inherit;
   outline: none;
-  text-align: left; /* Ensure the text aligns properly to the left */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  text-align: left; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 .project-wrapper p{
@@ -96,7 +90,6 @@ ul {
   background-color: #3a3a3a; /* Highlight on hover */
 }
 
-/* Nested list inside the collapsible wrapper */
 .nested {
   display: none;
   padding: 8px 16px;
@@ -119,11 +112,10 @@ ul {
   text-decoration: underline;
 }
 
-/* Arrow styles */
 .arrow {
-  margin-left: auto; /* Push the arrow to the far right */
+  margin-left: auto; 
   transition: transform 0.3s ease;
-  display: inline-block; /* Ensure it takes up space properly */
+  display: inline-block; 
   height: 20px;
   color: #ffffff;
 }
@@ -133,7 +125,7 @@ ul {
 }
 
 .collapsible.expanded .arrow {
-  transform: rotate(180deg); /* Rotate arrow */
+  transform: rotate(180deg); 
 }
 
 .headline {
@@ -216,13 +208,13 @@ ul {
 .project-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between blocks */
+  gap: 20px;
 }
 
 .project-block {
   display: flex;
-  align-items: flex-start; /* Align items by the top */
-  gap: 20px; /* Space between image and text */
+  align-items: flex-start; 
+  gap: 20px; 
 }
 
 .project-images {
@@ -264,23 +256,6 @@ ul {
   height: 100%;
 }
 
-@media (max-width: 1100px) {
-  .project-block {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .project-image {
-    width: 100%; /* Ensure it fills the width on smaller screens as well */
-  }
-
-  .project-text {
-    align-items: center;
-    text-align: center;
-  }
-}
-
-
 .home-button {
   display: inline-flex;
   background-color: #2a2a2a;
@@ -296,6 +271,7 @@ ul {
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
 }
+
 
 .home-button:hover {
   background-color: #3a3a3a;
@@ -318,8 +294,30 @@ ul {
   overflow: hidden;
 }
 
-/* Mobile and Tablet Styles */
+.project-wrapper {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-y: auto;
+  height: calc(100vh - 48px); /* Adjust to fit the viewport */
+}
+
 @media (max-width: 1100px) {
+  .project-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-image {
+    width: 100%; 
+  }
+
+  .project-text {
+    align-items: center;
+    text-align: center;
+  }
   body {
     height: auto;
     overflow: auto;
@@ -383,16 +381,19 @@ ul {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #2a2a2a; /* Dark background similar to tabs */
-    color: #ffffff; /* White text color */
-    border: 1px solid #3a3a3a; /* Subtle border for separation */
-    border-radius: 6px; /* Rounded corners to mimic a tab */
-    padding: 8px 16px; /* Padding for a tab-like feel */
-    font-size: 16px; /* Text size */
-    font-weight: bold; /* Bold font for emphasis */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    margin-top: 80px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    padding: 8px 16px; 
+    font-size: 16px; 
+    font-weight: bold;
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 20px;
   }
   
@@ -441,21 +442,6 @@ ul {
 .menu-tab-button:active {
   background-color: #d93a00; /* Slightly darker color when pressed */
 }
-
-
-
-}
-
-/* Project page */
-
-.project-wrapper {
-  flex: 1;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  overflow-y: auto;
-  height: calc(100vh - 48px); /* Adjust to fit the viewport */
 }
 
 @keyframes fadeIn {
@@ -531,7 +517,7 @@ ul {
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
-/* Modal Content (image) */
+
 .modal-content {
   margin: auto;
   display: block;
@@ -539,7 +525,7 @@ ul {
   max-width: 700px;
 }
 
-/* Caption of Modal Image */
+
 #caption {
   margin: auto;
   display: block;
@@ -562,7 +548,7 @@ ul {
   to {transform: scale(1)}
 }
 
-/* The Close Button */
+
 .close {
   position: absolute;
   top: 15px;
