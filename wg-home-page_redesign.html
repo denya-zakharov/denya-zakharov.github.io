@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World of Tanks Homepage Redesign</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
+    <button class="menu-tab-button">☰</button>
+    <div class="project-wrapper">
+      <p>2024/ World of Tanks Homepage Redesign </p>
+
+      
+      <div class="project-images" id="project-images">
+        <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/ed60ee42-093b-4737-932f-bb6388544066/" type="video/mp4"></video>
+        <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/0182c3b5-036b-4665-a70b-9fcc95463493/" type="video/mp4"></video>
+        <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/eb54df9d-04d8-4268-9167-2c8caabe690d/" type="video/mp4"></video>
+        <video class="project-image" autoplay muted loop><source src="https://ucarecdn.com/ab52f45f-10fa-469e-8fc3-9c91d4c01923/" type="video/mp4"></video>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded and parsed");
+      
+
+      // Load the menu component
+      const menuPlaceholder = document.getElementById("menu-placeholder");
+      fetch("menu.html")
+        .then(response => response.text())
+        .then(data => {
+          menuPlaceholder.innerHTML = data;
+          console.log("Menu loaded successfully");
+
+          // Menu open/close functionality
+          const menuButton = document.querySelector('.menu-tab-button');
+          const closeButton = document.querySelector('.close-tab-button');
+          const menu = document.querySelector('.menu');
+
+          const openMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.add('menu-open'); // Add class to show the menu
+                console.log("Menu opened");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          const closeMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.remove('menu-open'); // Remove class to hide the menu
+                console.log("Menu closed");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          // Attach click events to buttons
+          if (menuButton) {
+            menuButton.addEventListener('click', () => {
+              console.log("Menu button clicked");
+              openMenu();
+            });
+          } else {
+            console.error("Menu button not found");
+          }
+
+          if (closeButton) {
+            closeButton.addEventListener('click', () => {
+              console.log("Close button clicked");
+              closeMenu();
+            });
+          } else {
+            console.error("Close button not found");
+          }
+
+          // Select all collapsible buttons
+          const collapsibles = document.querySelectorAll('.collapsible');
+          collapsibles.forEach(button => {
+            button.addEventListener('click', () => {
+              // Toggle the "expanded" class to rotate the arrow
+              button.classList.toggle('expanded');
+
+              // Find the next sibling (the nested list)
+              const nestedList = button.nextElementSibling;
+              if (nestedList) {
+                // Toggle the display of the nested list
+                nestedList.style.display = nestedList.style.display === 'block' ? 'none' : 'block';
+              }
+            });
+          });
+        })
+        .catch(error => console.error("Error loading menu:", error));
+
+      // Animate elements on the page
+      const elementsToAnimate = document.querySelectorAll('.project-wrapper > *');
+      elementsToAnimate.forEach((element, index) => {
+        element.classList.add('fade-in', `fade-in-delay-${index}`);
+      });
+    });
+
+    
+
+
+
+</script>
+
+</body>
+</html>
