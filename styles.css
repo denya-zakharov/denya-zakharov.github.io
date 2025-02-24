@@ -44,16 +44,27 @@ ul, li {
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.12px;
-  list-style: none;
   padding: 0;
   margin: 0;
 }
 
+
 ul {
   margin-bottom: 32px;
-  list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.menu-inside {
+  list-style: none;
+}
+
+.collapsible-wrapper {
+  list-style: none;
+}
+
+.nested {
+  list-style: none;
 }
 
 .collapsible-wrapper {
@@ -218,6 +229,11 @@ ul {
   gap: 20px; 
 }
 
+
+.project-list-item {
+  padding-bottom: 20px;
+  max-width: 880px;
+}
 .project-images {
   display: flex;
   flex-direction: column;
