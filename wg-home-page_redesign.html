@@ -41,6 +41,12 @@
 
         <p>As a result, each group now sees a slightly different version of the page. New players are presented with an onboarding promo block that encourages them to register and download the game, while returning players see the latest major news update.</p>
         <img class="project-image" src="https://ucarecdn.com/0f219fb1-94e1-4bb2-a88a-3465faf5fc67/-/format/auto/-/quality/smart/" alt="promoblock logic illustration" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/906ee769-22c0-431a-97b5-61c109ce981a/-/format/auto/-/quality/smart/" alt="03" loading="lazy"/>
+
+        <div class="project-video" style="position:relative;">
+          <iframe src="https://player.vimeo.com/video/1059127738?h=c371ac8d5a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="oldie-demo" loading="lazy"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
 
         <p>World of Tanks has a long-standing history, with many elements being reworked, updated, and then revised again over time. As a result, finding up-to-date guidelines and standards became nearly impossible. This presented the perfect opportunity to introduce a structured set of guidelines and commit to maintaining them. To ensure consistency, the following standards were established: typography rules, iconography, colors, spacings, content area width, and responsive breakpoints. As a result, design and development now have a clear set of elements and rules to follow in every future reworks, ensuring consistency and coherence across all updates.</p>
         <img class="project-image" src="https://ucarecdn.com/73ac0e20-1a94-4097-9361-e431a8a449ab/-/format/auto/-/quality/smart/" alt="figma variables illustration" loading="lazy"/>
@@ -58,16 +64,18 @@
         </ul>
         <img class="project-image" src="https://ucarecdn.com/e95e51c7-22a0-4fa0-9bda-928c44b5c135/-/format/auto/-/quality/smart/" alt="01" loading="lazy"/>
 
-        <div class="project-video" style="--aspect-ratio: 255/128; position:relative;"><iframe src="https://player.vimeo.com/video/1059855025?h=7101c48637&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording 2025-02-24 205707"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-        
-        <img class="project-image" src="https://ucarecdn.com/906ee769-22c0-431a-97b5-61c109ce981a/-/format/auto/-/quality/smart/" alt="03" loading="lazy"/>
+        <p>The most significant menu rework was on mobile. Previously, there were two large buttons: the left one opened the category menu for portal navigation, while the right one attempted to open a shared menu across all WOT products (Common Menu). The new design moves the main navigation to the left for easier access, while the Common Menu is now always visible at the top. Additionally, a "Create Account" CTA was added.</p>
 
-        <div class="project-video" style="position:relative;">
-          <iframe src="https://player.vimeo.com/video/1059127738?h=c371ac8d5a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="oldie-demo" loading="lazy"></iframe>
+        <p>One remaining issue is that categories like "Game" and "Guides" have their own pages. The original plan was to restructure the menu fully, but due to time constraints and legacy issues, this wasn't possible. As a temporary solution, tapping the category name now opens the page and anywhere else opens a dropdown, previously the only way to open the dropdown was to tap the icon on the right. A proper fix is planned for MVP+</p>
+        <div class="project-video" style="--aspect-ratio: 255/128; position:relative;">
+          <iframe src="https://player.vimeo.com/video/1059855025?h=7101c48637&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording 2025-02-24 205707"></iframe>
         </div>
-        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script src="https://player.vimeo.com/api/player.js"></script></div>
 
+
+        <p>Latest News is the main section featuring all the latest and greatest peaces of news. Updates, collaborations. A card layout was chosen as it is both flexible and familiar.</p>
         <img class="project-image" src="https://ucarecdn.com/89909d9d-ca71-40be-8e05-7cb0ef7fb112/-/format/auto/-/quality/smart/" alt="05" loading="lazy"/>
+        <p>It was crucial to design a consistent card component that accommodates all potential use cases. Currently, it supports two: News and Special Items, with more to come. The card includes tags, dates, buttons, an image, text, two alignment options: horizontal and vertical and three states: default, hover and visited. All cards use the same image size and safe content area, streamlining asset preparation and saving significant time.</p>
         <img class="project-image" src="https://ucarecdn.com/6a282fc4-0516-4664-ba4b-f06b8f98b899/-/format/auto/-/quality/smart/" alt="06" loading="lazy"/>
 
         <div class="project-video" style="position:relative;">
@@ -75,8 +83,14 @@
         </div>
         <script src="https://player.vimeo.com/api/player.js"></script>
 
+        <p>The product roadmap is structured so that multiple major news items can appeat simultaneously, with up to five fresh generic news pieces per day. To manage this, the first row of news is customizable via the admin panel, allowing users to “pin” up to four news items. The layout adjusts dynamically across all resolutions.</p>
+        <p>Additionally, the premium shop banner’s position was initially undefined, so we accounted for scenarios where it might replace a news item. This option remains toggleable, enabling quick adjustments to push the banner higher if the CTR ever drops.</p>
         <img class="project-image" src="https://ucarecdn.com/9100eb2e-2830-4ddf-864c-d6fae6683873/-/format/auto/-/quality/smart/" alt="07" loading="lazy"/>
+
+        <p>This section consolidates all purchasable content, including in-game items and store entry points. The first three cards link to specific item store pages, while the two banners lead to the main store pages.</p>
         <img class="project-image" src="https://ucarecdn.com/9636976f-a803-4c61-a846-f91b24fd5e5c/-/format/auto/-/quality/smart/" alt="08" loading="lazy"/>
+        
+        <p>The layout is simpler since there’s no pinning functionality. However, if the setting to push the banner up is toggled, the section will display four items instead of three.</p>
         <img class="project-image" src="https://ucarecdn.com/5573f01a-2c32-4819-9cef-b0985ac5499e/-/format/auto/-/quality/smart/" alt="09" loading="lazy"/>
         <img class="project-image" src="https://ucarecdn.com/318a62e4-3ed8-49d4-982b-e65cdc80c005/-/format/auto/-/quality/smart/" alt="10" loading="lazy"/>
         <img class="project-image" src="https://ucarecdn.com/1e6b8462-8776-49c5-978b-70a5312fbb18/-/format/auto/-/quality/smart/" alt="11" loading="lazy"/>
