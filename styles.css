@@ -197,6 +197,10 @@ ul {
   
 }
 
+.avatar{
+  width: 150px;
+  margin-bottom: 20px;
+}
 .project-images-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -220,7 +224,6 @@ ul {
 .project-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 .project-block {
