@@ -4,193 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Portfolio with Overlay Menu</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
-    <button class="menu-tab-button">
-      <img class="icon" src="https://ucarecdn.com/0b5c1937-02fe-4b6f-8bc4-21edf07b5db2/" alt="Menu Icon" />
-    </button>
-    <div class="content-wrapper">
-      <div class="text-section">
-        <img class="avatar" src="https://ucarecdn.com/9e2d8c62-4675-47e9-81df-ed1b0e16aea9/">
-        <p>
-          Currently, I am a UX Designer at Wargaming, working on World of Tanks. Since 2024, I have delivered over 15 features, ranging from functionality improvements (e.g. One-Trust Cookie Banner, Admin Pannel) to full redesigns of major tools, such as the WoT Portal or WoT Registration form. 
-        </p>
-        <p>
-          Previously, I was part of the Design Department at Wrike, where I initially focused on creating marketing landing pages and banner campaigns. Later, as a member of the Web UX Team, I contributed to the design and optimization of Wrike’s website and blog.
-        </p>
-        <div class="contact" id="contact">
-          <ul>
-            <li><a href="https://www.linkedin.com/in/denis-zakharov-1b1197190/" target="_blank">Linked in</a></li>
-            <li><a href="https://www.behance.net/5uperbro" target="_blank">Behance</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="image-section">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/FontLoader.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/geometries/TextGeometry.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/controls/OrbitControls.js"></script>
-        <script>
-          // Basic scene setup
-          const scene = new THREE.Scene();
-          const camera = new THREE.PerspectiveCamera(
-            50, window.innerWidth / window.innerHeight, 0.1, 1000
-          );
-          camera.position.set(0, 0, 100);
-      
-          const renderer = new THREE.WebGLRenderer({ antialias: true });
-          renderer.setSize(window.innerWidth, window.innerHeight);
-          const imageSection = document.querySelector('.image-section');
-          imageSection.appendChild(renderer.domElement);
-      
-          // Enable OrbitControls for user interaction
-          const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      
-          // Lighting
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-          scene.add(ambientLight);
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-          directionalLight.position.set(0, 1, 1);
-          scene.add(directionalLight);
-      
-          // Create a group to hold all text meshes
-          const textGroup = new THREE.Group();
-          scene.add(textGroup);
-      
-          // Load the bold font and create text meshes arranged on a sphere
-          const loader = new THREE.FontLoader();
-          loader.load(
-            'https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/fonts/helvetiker_regular.typeface.json',
-            function (font) {
-              const text = "nice to meet you";
-                const colors = [0xF25322, 0x68C3C0, 0xFCB03C, 0xFC5B3F, 0x6A0572];
-                const textMaterial = new THREE.MeshStandardMaterial({ color: colors[Math.floor(Math.random() * colors.length)], metalness: 0.0, roughness: 2 });
-              const count = 100;    // number of duplicates
-              const radius = 25;   // radius of the sphere
-      
-              // Use the Fibonacci sphere algorithm for even distribution
-              const offset = 2 / count;
-              const increment = Math.PI * (3 - Math.sqrt(5));
-      
-              for (let i = 0; i < count; i++) {
-                let y = ((i * offset) - 1) + (offset / 2);
-                let r = Math.sqrt(1 - y * y);
-                let phi = i * increment;
-      
-                let x = Math.cos(phi) * r;
-                let z = Math.sin(phi) * r;
-      
-                const geometry = new THREE.TextGeometry(text, {
-                  font: font,
-                  size: 4,
-                  height: 0,
-                  curveSegments: 12,
-                  bevelEnabled: false
-                });
-                geometry.computeBoundingBox();
-                geometry.center();
-      
-                const mesh = new THREE.Mesh(geometry, textMaterial);
-                // Position the mesh on the sphere surface
-                mesh.position.set(x * radius, y * radius, z * radius);
-      
-                // Orient the text so its front (positive z) points outward
-                const dir = mesh.position.clone().normalize();
-                mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), dir);
-      
-                // Assign a random rotation speed to each mesh
-                mesh.userData.rotationSpeed = Math.random() * 0.001;
-      
-                textGroup.add(mesh);
-              }
-            }
-          );
-      
-          // Animation loop with slow auto-rotation
-          function animate() {
-            requestAnimationFrame(animate);
-            textGroup.rotation.y += 0.0005; // slow rotation of the entire group
-            textGroup.children.forEach(mesh => {
-              mesh.rotation.y += mesh.userData.rotationSpeed; // apply random rotation speed to each mesh
-            });
-            renderer.render(scene, camera);
-            controls.update();
-          }
-          animate();
-      
-          // Adjust scene on window resize
-          window.addEventListener('resize', function () {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-          });
-        </script>
-      </div>
-    </div>
-  </div>
-
-  <script>
+  <link rel="icon" href="images/favicon.ico.svg" type="image/x-icon">
+  <!-- Non-blocking CSS load -->
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <script defer>
     document.addEventListener("DOMContentLoaded", () => {
-      console.log("DOM fully loaded and parsed");
-
-      // Load the menu component
+      // Load the menu component without debug logs
       const menuPlaceholder = document.getElementById("menu-placeholder");
       fetch("menu.html")
         .then(response => response.text())
         .then(data => {
           menuPlaceholder.innerHTML = data;
-          console.log("Menu loaded successfully");
-
           // Menu open/close functionality
           const menuButton = document.querySelector('.menu-tab-button');
           const closeButton = document.querySelector('.close-tab-button');
           const menu = document.querySelector('.menu');
 
           const openMenu = () => {
-            if (window.innerWidth <= 1100) { // Only for mobile and tablet
-              if (menu) {
-                menu.classList.add('menu-open'); // Add class to show the menu
-                console.log("Menu opened");
-              } else {
-                console.error("Menu not found");
-              }
+            if (window.innerWidth <= 1100 && menu) {
+              menu.classList.add('menu-open');
             }
           };
 
           const closeMenu = () => {
-            if (window.innerWidth <= 1100) { // Only for mobile and tablet
-              if (menu) {
-                menu.classList.remove('menu-open'); // Remove class to hide the menu
-                console.log("Menu closed");
-              } else {
-                console.error("Menu not found");
-              }
+            if (window.innerWidth <= 1100 && menu) {
+              menu.classList.remove('menu-open');
             }
           };
 
-          // Attach click events to buttons
           if (menuButton) {
-            menuButton.addEventListener('click', () => {
-              console.log("Menu button clicked");
-              openMenu();
-            });
-          } else {
-            console.error("Menu button not found");
+            menuButton.addEventListener('click', openMenu);
           }
 
           if (closeButton) {
-            closeButton.addEventListener('click', () => {
-              console.log("Close button clicked");
-              closeMenu();
-            });
-          } else {
-            console.error("Close button not found");
+            closeButton.addEventListener('click', closeMenu);
           }
 
-          // Close menu when clicking on the blurred background
           const blurredBackground = document.querySelector('.menu');
           blurredBackground.addEventListener('click', (event) => {
             if (event.target === blurredBackground) {
@@ -198,23 +48,20 @@
             }
           });
 
-          // Select all collapsible buttons
           const collapsibles = document.querySelectorAll('.collapsible');
           collapsibles.forEach(button => {
             button.addEventListener('click', () => {
-              // Toggle the "expanded" class to rotate the arrow
               button.classList.toggle('expanded');
-
-              // Find the next sibling (the nested list)
               const nestedList = button.nextElementSibling;
               if (nestedList) {
-                // Toggle the display of the nested list
                 nestedList.style.display = nestedList.style.display === 'block' ? 'none' : 'block';
               }
             });
           });
         })
-        .catch(error => console.error("Error loading menu:", error));
+        .catch(error => {
+          /* Error handling can be implemented here */
+        });
 
       // Animate elements on the page
       const elementsToAnimate = document.querySelectorAll('.content-wrapper > *');
@@ -223,5 +70,136 @@
       });
     });
   </script>
+</head>
+<body>
+  <div class="container">
+    <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
+    <button class="menu-tab-button">
+      <img class="icon" src="https://ucarecdn.com/07a52e24-4675-4eb3-9715-4a5444b541e3/" loading="lazy" alt="Menu Icon" />
+    </button>
+    <div class="content-wrapper">
+      <div class="text-section">
+        <img class="avatar" src="https://ucarecdn.com/9e2d8c62-4675-47e9-81df-ed1b0e16aea9/" loading="lazy" alt="Avatar">
+        <p>
+          Currently, I'm a UX Designer at Wargaming, working on World of Tanks. Since 2024, I've delivered over 15 features ranging from everyday improvements like the One-Trust Cookie Banner, Admin Panel adjustments, and design reviews, to comprehensive redesigns of major tools such as the WoT Portal, WoT Registration Flow, and a custom landing pages builder.
+        </p>
+        <p>
+          Before joining Wargaming, I was part of Wrike's Design Department. Initially, I focused on creating marketing landing pages and banner campaign combinations. Later, as a member of the Web UX Team, I contributed to design and optimize Wrike’s website, blog and help center.
+        </p>
+        <div class="contact" id="contact">
+          <ul>
+            <li><a href="https://www.linkedin.com/in/denis-zakharov-1b1197190/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/5uperbro" target="_blank">Behance</a></li>
+            <li><a href="https://www.instagram.com/5uperbro/" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="image-section">
+        <!-- Defer and lazy load Three.js libraries -->
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/FontLoader.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/geometries/TextGeometry.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/controls/OrbitControls.js"></script>
+        <script defer>
+          function initThreeScene() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+              50, window.innerWidth / window.innerHeight, 0.1, 1000
+            );
+            camera.position.set(0, 0, 100);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            const imageSection = document.querySelector('.image-section');
+            imageSection.appendChild(renderer.domElement);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(0, 1, 1);
+            scene.add(directionalLight);
+
+            const textGroup = new THREE.Group();
+            scene.add(textGroup);
+
+            const loader = new THREE.FontLoader();
+            loader.load(
+              'https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/fonts/helvetiker_regular.typeface.json',
+              function (font) {
+                const text = "nice to meet you";
+                const colors = [0xF25322, 0x68C3C0, 0xFCB03C, 0xFC5B3F, 0x6A0572];
+                const textMaterial = new THREE.MeshStandardMaterial({ color: colors[Math.floor(Math.random() * colors.length)], metalness: 0.0, roughness: 2 });
+                const count = 100;
+                const radius = 25;
+                const offset = 2 / count;
+                const increment = Math.PI * (3 - Math.sqrt(5));
+
+                for (let i = 0; i < count; i++) {
+                  let y = ((i * offset) - 1) + (offset / 2);
+                  let r = Math.sqrt(1 - y * y);
+                  let phi = i * increment;
+                  let x = Math.cos(phi) * r;
+                  let z = Math.sin(phi) * r;
+
+                  const geometry = new THREE.TextGeometry(text, {
+                    font: font,
+                    size: 4,
+                    height: 0,
+                    curveSegments: 12,
+                    bevelEnabled: false
+                  });
+                  geometry.computeBoundingBox();
+                  geometry.center();
+
+                  const mesh = new THREE.Mesh(geometry, textMaterial);
+                  mesh.position.set(x * radius, y * radius, z * radius);
+                  const dir = mesh.position.clone().normalize();
+                  mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), dir);
+                  mesh.userData.rotationSpeed = Math.random() * 0.001;
+                  textGroup.add(mesh);
+                }
+              }
+            );
+
+            function animate() {
+              requestAnimationFrame(animate);
+              textGroup.rotation.y += 0.0005;
+              textGroup.children.forEach(mesh => {
+                mesh.rotation.y += mesh.userData.rotationSpeed;
+              });
+              renderer.render(scene, camera);
+              controls.update();
+            }
+            animate();
+
+            window.addEventListener('resize', function () {
+              camera.aspect = window.innerWidth / window.innerHeight;
+              camera.updateProjectionMatrix();
+              renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+          }
+
+          // Lazy load the Three.js scene when .image-section is in view
+          document.addEventListener("DOMContentLoaded", function() {
+            const imageSection = document.querySelector('.image-section');
+            if ('IntersectionObserver' in window) {
+              const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    initThreeScene();
+                    observer.disconnect();
+                  }
+                });
+              });
+              observer.observe(imageSection);
+            } else {
+              initThreeScene();
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

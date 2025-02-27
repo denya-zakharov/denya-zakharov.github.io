@@ -154,12 +154,37 @@ ul {
 
 .aaa {
   overflow-y: auto;
+  width: 300px;
 }
 
 .menu {
   width: 300px;
   padding:24px;
   overflow-y: auto;
+}
+/* Custom scroll bar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #2e2e2e;
+}
+
+/* WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2e2e2e;
+  border-radius: 8px; /* Rounded track corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 8px; /* Rounded thumb corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
 
 .contact {
