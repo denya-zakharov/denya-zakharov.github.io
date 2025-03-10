@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World of Tanks TinyMCE WYSIWYG improvement</title>
+  <link rel="icon" href="images/favicon.ico.svg" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
+    <button class="menu-tab-button">
+      <img class="icon" src="https://ucarecdn.com/07a52e24-4675-4eb3-9715-4a5444b541e3/" alt="Menu Icon" />
+    </button>
+    <div class="project-wrapper">
+      <p>2024 / World of Tanks One Trust Cookie Banner </p>
+
+      <div class="project-images" id="project-images">
+
+        <div class="project-video" style="--aspect-ratio: 16/9; position:relative;">
+          <iframe src="https://player.vimeo.com/video/1064455148?h=41465428a3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Banner demo" loading="lazy" muted></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script></div>
+
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <img class="project-image" src="https://ucarecdn.com/176432dc-cc36-49a7-8f75-4e4d7e459a1a/-/format/auto/-/quality/smart/" alt="01" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/74d1664a-4020-4d76-b176-c15af915210c/-/format/auto/-/quality/smart/" alt="02" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/f2652b00-b97c-4062-9b68-042a63a5bbf6/-/format/auto/-/quality/smart/" alt="03" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/afe0db27-d103-4e53-9abb-3a3671d21cc4/-/format/auto/-/quality/smart/" alt="04" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/15fd9383-48ac-48ce-a87f-98d6b61f4311/-/format/auto/-/quality/smart/" alt="05" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/2135da92-93a1-4ed8-9ecf-ec5892e390e8/-/format/auto/-/quality/smart/" alt="06" loading="lazy"/>
+      
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded and parsed");
+
+      // Load the menu component
+      const menuPlaceholder = document.getElementById("menu-placeholder");
+      fetch("menu.html")
+        .then(response => response.text())
+        .then(data => {
+          menuPlaceholder.innerHTML = data;
+          console.log("Menu loaded successfully");
+
+          // Menu open/close functionality
+          const menuButton = document.querySelector('.menu-tab-button');
+          const closeButton = document.querySelector('.close-tab-button');
+          const menu = document.querySelector('.menu');
+
+          const openMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.add('menu-open'); // Add class to show the menu
+                console.log("Menu opened");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          const closeMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.remove('menu-open'); // Remove class to hide the menu
+                console.log("Menu closed");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          // Attach click events to buttons
+          if (menuButton) {
+            menuButton.addEventListener('click', () => {
+              console.log("Menu button clicked");
+              openMenu();
+            });
+          } else {
+            console.error("Menu button not found");
+          }
+
+          if (closeButton) {
+            closeButton.addEventListener('click', () => {
+              console.log("Close button clicked");
+              closeMenu();
+            });
+          } else {
+            console.error("Close button not found");
+          }
+
+          // Close menu when clicking on the blurred background
+          const blurredBackground = document.querySelector('.menu');
+          blurredBackground.addEventListener('click', (event) => {
+            if (event.target === blurredBackground) {
+              closeMenu();
+            }
+          });
+
+          // Select all collapsible buttons
+          const collapsibles = document.querySelectorAll('.collapsible');
+          collapsibles.forEach(button => {
+            button.addEventListener('click', () => {
+              // Toggle the "expanded" class to rotate the arrow
+              button.classList.toggle('expanded');
+
+              // Find the next sibling (the nested list)
+              const nestedList = button.nextElementSibling;
+              if (nestedList) {
+                // Toggle the display of the nested list
+                nestedList.style.display = nestedList.style.display === 'block' ? 'none' : 'block';
+              }
+            });
+          });
+        })
+        .catch(error => console.error("Error loading menu:", error));
+
+      // Animate elements on the page
+      const elementsToAnimate = document.querySelectorAll('.project-wrapper > *');
+      elementsToAnimate.forEach((element, index) => {
+        element.classList.add('fade-in', `fade-in-delay-${index}`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World of Tanks TinyMCE WYSIWYG improvement</title>
+  <link rel="icon" href="images/favicon.ico.svg" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="aaa" id="menu-placeholder"></div> <!-- Placeholder for the menu -->
+    <button class="menu-tab-button">
+      <img class="icon" src="https://ucarecdn.com/07a52e24-4675-4eb3-9715-4a5444b541e3/" alt="Menu Icon" />
+    </button>
+    <div class="project-wrapper">
+      <p>2025 / World of Tanks TinyMCE WYSIWYG improvement </p>
+
+      <div class="project-images" id="project-images">
+        <img class="project-image" src="https://ucarecdn.com/3b4292f4-b35a-4b1a-b316-4743842982b5/-/format/auto/-/quality/smart/" alt="01" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/4c4c8db6-ed67-4b2c-a8c4-6c75efb34e8d/-/format/auto/-/quality/smart/" alt="02" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/34d04ed5-7ed2-4b6c-ac41-dcd69499290e/-/format/auto/-/quality/smart/" alt="03" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/8c3c4e08-12e4-4493-bd90-9dea8933e7f7/-/format/auto/-/quality/smart/" alt="04" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/34f9f458-9957-4fb6-ac2b-a0bb47b5619d/-/format/auto/-/quality/smart/" alt="05" loading="lazy"/>
+        <img class="project-image" src="https://ucarecdn.com/8d2b99a7-4198-49f4-ab19-cd850682ec94/-/format/auto/-/quality/smart/" alt="06" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded and parsed");
+
+      // Load the menu component
+      const menuPlaceholder = document.getElementById("menu-placeholder");
+      fetch("menu.html")
+        .then(response => response.text())
+        .then(data => {
+          menuPlaceholder.innerHTML = data;
+          console.log("Menu loaded successfully");
+
+          // Menu open/close functionality
+          const menuButton = document.querySelector('.menu-tab-button');
+          const closeButton = document.querySelector('.close-tab-button');
+          const menu = document.querySelector('.menu');
+
+          const openMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.add('menu-open'); // Add class to show the menu
+                console.log("Menu opened");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          const closeMenu = () => {
+            if (window.innerWidth <= 1100) { // Only for mobile and tablet
+              if (menu) {
+                menu.classList.remove('menu-open'); // Remove class to hide the menu
+                console.log("Menu closed");
+              } else {
+                console.error("Menu not found");
+              }
+            }
+          };
+
+          // Attach click events to buttons
+          if (menuButton) {
+            menuButton.addEventListener('click', () => {
+              console.log("Menu button clicked");
+              openMenu();
+            });
+          } else {
+            console.error("Menu button not found");
+          }
+
+          if (closeButton) {
+            closeButton.addEventListener('click', () => {
+              console.log("Close button clicked");
+              closeMenu();
+            });
+          } else {
+            console.error("Close button not found");
+          }
+
+          // Close menu when clicking on the blurred background
+          const blurredBackground = document.querySelector('.menu');
+          blurredBackground.addEventListener('click', (event) => {
+            if (event.target === blurredBackground) {
+              closeMenu();
+            }
+          });
+
+          // Select all collapsible buttons
+          const collapsibles = document.querySelectorAll('.collapsible');
+          collapsibles.forEach(button => {
+            button.addEventListener('click', () => {
+              // Toggle the "expanded" class to rotate the arrow
+              button.classList.toggle('expanded');
+
+              // Find the next sibling (the nested list)
+              const nestedList = button.nextElementSibling;
+              if (nestedList) {
+                // Toggle the display of the nested list
+                nestedList.style.display = nestedList.style.display === 'block' ? 'none' : 'block';
+              }
+            });
+          });
+        })
+        .catch(error => console.error("Error loading menu:", error));
+
+      // Animate elements on the page
+      const elementsToAnimate = document.querySelectorAll('.project-wrapper > *');
+      elementsToAnimate.forEach((element, index) => {
+        element.classList.add('fade-in', `fade-in-delay-${index}`);
+      });
+    });
+  </script>
+</body>
+</html>
