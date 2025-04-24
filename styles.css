@@ -242,7 +242,7 @@ ul {
 }
 
 .menu-tab-button {
-  display: none;
+  display: none; /* Hidden by default for larger screens */
 }
 
 
@@ -471,38 +471,40 @@ ul {
 
 
   .menu-tab-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2a2a2a; /* Dark background similar to tabs */
-  color: #ffffff; /* White text color */
-  border: 1px solid #3a3a3a; /* Subtle border for separation */
-  border-radius: 6px; /* Rounded corners to mimic a tab */
-  padding: 8px 16px; /* Padding for a tab-like feel */
-  font-size: 16px; /* Text size */
-  font-weight: bold; /* Bold font for emphasis */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-  margin-top: 24px;
-  margin-right: 24px;
-  margin-left: 24px;
-  max-width: 20px;
-}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 20px;
+    margin: 0;
+    z-index: 1001;
+  }
 
-.menu-inside {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto; /* Center align horizontally */
-}
+  .menu-inside {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center align horizontally */
+  }
 
-.menu-tab-button:hover {
-  background-color: #3a3a3a;
-  color: #ffffff;
-}
+  .menu-tab-button:hover {
+    background-color: #3a3a3a;
+    color: #ffffff;
+  }
 
-.menu-tab-button:active {
-  background-color: #d93a00; /* Slightly darker color when pressed */
-}
+  .menu-tab-button:active {
+    background-color: #d93a00; /* Slightly darker color when pressed */
+  }
 }
 
 @keyframes fadeIn {
